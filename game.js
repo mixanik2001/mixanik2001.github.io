@@ -63,6 +63,7 @@ let level = [...LEVEL_1];
 let score = 0;
 let lives = 3;
 let animationFrameId;
+let keysPressed = {}; // Объект для хранения состояния нажатых клавиш
 
 // Танк игрока
 class Tank {
@@ -378,8 +379,9 @@ function initGame() {
     document.getElementById('lives').textContent = lives;
     document.getElementById('score').textContent = score;
     
-    // Обработчики нажатий клавиш
+    // Обработчики нажатий и отпускания клавиш
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
     
     // Обработчик клика мыши для выстрела
     canvas.addEventListener('mousedown', (event) => {
@@ -479,34 +481,13 @@ function respawnPlayer() {
     playerTank.direction = DIRECTIONS.UP;
 }
 
-function movePlayer(direction) {
-    if (!gameRunning || gameOver) return;
-    playerTank.move(direction);
-}
-
 function handleKeyDown(e) {
     if (!gameRunning || gameOver) return;
-    
-    // Используем event.code для независимости от раскладки
-    switch (e.code) { 
-        case 'KeyW':
-        case 'ArrowUp': // Оставим поддержку стрелок на всякий случай
-            movePlayer(DIRECTIONS.UP);
-            break;
-        case 'KeyD':
-        case 'ArrowRight':
-            movePlayer(DIRECTIONS.RIGHT);
-            break;
-        case 'KeyS':
-        case 'ArrowDown':
-            movePlayer(DIRECTIONS.DOWN);
-            break;
-        case 'KeyA':
-        case 'ArrowLeft':
-            movePlayer(DIRECTIONS.LEFT);
-            break;
-        // Выстрел теперь обрабатывается кликом мыши
-    }
+    keysPressed[e.code] = true; // Помечаем клавишу как нажатую
+}
+
+function handleKeyUp(e) {
+    keysPressed[e.code] = false; // Помечаем клавишу как отпущенную
 }
 
 function updateEnemies() {
@@ -635,6 +616,19 @@ function drawMap() {
 
 function gameLoop() {
     if (!gameRunning) return;
+    
+    // Обработка ввода пользователя (непрерывное движение)
+    if (!gameOver && playerTank) { // Добавим проверку на существование playerTank
+        if (keysPressed['KeyW'] || keysPressed['ArrowUp']) {
+            playerTank.move(DIRECTIONS.UP);
+        } else if (keysPressed['KeyS'] || keysPressed['ArrowDown']) {
+            playerTank.move(DIRECTIONS.DOWN);
+        } else if (keysPressed['KeyA'] || keysPressed['ArrowLeft']) {
+            playerTank.move(DIRECTIONS.LEFT);
+        } else if (keysPressed['KeyD'] || keysPressed['ArrowRight']) {
+            playerTank.move(DIRECTIONS.RIGHT);
+        }
+    }
     
     // Очистка холста
     ctx.clearRect(0, 0, canvas.width, canvas.height);
