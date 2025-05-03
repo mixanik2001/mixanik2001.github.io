@@ -1,16 +1,16 @@
 // Константы игры
-const TILE_SIZE = 32;
-const GRID_SIZE = 13;
-const CANVAS_SIZE = TILE_SIZE * GRID_SIZE;
+const TILE_SIZE = 32; // Размер одной клетки игрового поля в пикселях
+const GRID_SIZE = 13; // Размер игрового поля в клетках (13x13)
+const CANVAS_SIZE = TILE_SIZE * GRID_SIZE; // Размер холста в пикселях
 
 // Типы объектов
 const OBJECT_TYPES = {
     EMPTY: 0,
-    BRICK: 1,
-    STEEL: 2,
-    WATER: 3,
-    BUSH: 4,
-    BASE: 5
+    BRICK: 1, // Разрушаемый кирпич
+    STEEL: 2, // Неразрушаемая сталь
+    WATER: 3, // Вода (непроходима)
+    BUSH: 4,  // Кусты (маскируют танки)
+    BASE: 5   // База игрока
 };
 
 // Направления
@@ -23,8 +23,8 @@ const DIRECTIONS = {
 
 // Цвета
 const COLORS = {
-    PLAYER: '#ffffff',
-    ENEMY: '#0000ff',
+    PLAYER: '#ffffff', // Танк игрока
+    ENEMY: '#0000ff',  // Танк противника
     BRICK: '#b86f50',
     STEEL: '#777777',
     WATER: '#5555ff',
@@ -424,7 +424,7 @@ function initGame() {
         upBtn.addEventListener(event, () => setMobileDirection('up', false));
         downBtn.addEventListener(event, () => setMobileDirection('down', false));
         leftBtn.addEventListener(event, () => setMobileDirection('left', false));
-        rightBtn.addEventListener(event, () => setMobileDirection('right', false));
+        rightBtn.addEventListener('touchend', () => setMobileDirection('right', false));
     });
 
     // Кнопка Огня (оставляем как было - одиночный выстрел)

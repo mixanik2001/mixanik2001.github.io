@@ -1,19 +1,22 @@
+/* Общие сбросы стилей */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Стили для всей страницы */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Светло-серый фон */
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;     /* Центрирование по вертикали */
+    padding: 20px; /* Небольшой отступ от краев */
 }
 
+/* Контейнер всей игры */
 .game-container {
     max-width: 800px;
     width: 100%;
@@ -22,10 +25,11 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Элементы в столбец */
+    align-items: center; /* Центрирование элементов внутри контейнера */
 }
 
+/* Верхняя часть: заголовок и статистика */
 .game-header {
     width: 100%;
     display: flex;
@@ -41,21 +45,24 @@ h1 {
 
 .game-stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Жизни и очки по краям */
     width: 100%;
     max-width: 300px;
     font-size: 18px;
     font-weight: bold;
 }
 
+/* Игровой холст */
 #gameCanvas {
     border: 2px solid #333;
-    background-color: #000;
+    background-color: #000; /* Черный фон самого игрового поля */
     max-width: 100%;
     height: auto;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1; /* Сохраняем квадратные пропорции */
+    display: block; /* Убираем возможный нижний отступ */
 }
 
+/* Текст приветствия */
 .welcome-text {
     font-size: 24px;
     color: #555;
@@ -63,26 +70,31 @@ h1 {
     text-align: center;
 }
 
+/* Блок с мобильными кнопками управления */
 .mobile-controls {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Кнопки направлений и огонь по краям */
+    align-items: center; /* Выравнивание по вертикали */
     width: 100%;
     max-width: 500px;
 }
 
+/* Блок кнопок направления */
 .direction-controls {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Горизонтальный ряд кнопок (влево/вправо) */
 .horizontal-controls {
     display: flex;
-    gap: 50px;
+    gap: 50px; /* Пространство между кнопками влево/вправо */
     margin: 10px 0;
 }
 
+/* Общие стили для кнопок */
 button {
     padding: 15px 25px;
     font-size: 18px;
@@ -91,14 +103,20 @@ button {
     color: white;
     border: none;
     border-radius: 8px;
+    user-select: none; /* Предотвращаем выделение текста на кнопке */
+    -webkit-user-select: none; /* Для Safari */
+    -ms-user-select: none; /* Для IE */
+    touch-action: manipulation; /* Улучшает отзывчивость на тач-устройствах */
 }
 
+/* Отдельные стили для кнопки Огонь */
 #fireBtn {
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Красный */
     padding: 20px 40px;
     font-size: 20px;
 }
 
+/* Блок с кнопками меню (Старт/Рестарт) */
 .game-menu {
     margin-top: 20px;
     width: 100%;
@@ -106,13 +124,17 @@ button {
     justify-content: center;
 }
 
-#startBtn, #restartBtn {
-    background-color: #4CAF50;
+/* Стили для кнопок Старт/Рестарт */
+#startBtn,
+#restartBtn {
+    background-color: #4CAF50; /* Зеленый */
     padding: 12px 30px;
     font-size: 18px;
 }
 
-/* Адаптивность для устройств */
+/* --- Адаптивность для разных экранов --- */
+
+/* Планшеты и небольшие десктопы */
 @media (max-width: 768px) {
     .game-container {
         padding: 10px;
@@ -132,12 +154,14 @@ button {
     }
 }
 
+/* Десктопы (скрываем мобильные кнопки) */
 @media (min-width: 769px) {
     .mobile-controls {
         display: none;
     }
 }
 
+/* Маленькие мобильные телефоны */
 @media (max-width: 480px) {
     .game-stats {
         font-size: 16px;

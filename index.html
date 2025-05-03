@@ -2,13 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Важно для адаптивности -->
     <title>Battle City - Танчики</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Иконка сайта -->
 </head>
 <body>
+    <!-- Основной контейнер игры -->
     <div class="game-container">
+        
+        <!-- Верхняя часть: Заголовок и статистика -->
         <div class="game-header">
             <h1>Battle City</h1>
             <div class="game-stats">
@@ -16,9 +19,16 @@
                 <div class="score">Очки: <span id="score">0</span></div>
             </div>
         </div>
+        
+        <!-- Сообщение перед началом игры -->
         <p id="welcome-message" class="welcome-text">Привет!</p>
+        
+        <!-- Игровой холст (здесь рисуется сама игра) -->
         <canvas id="gameCanvas"></canvas>
+        
+        <!-- Блок с кнопками управления для мобильных устройств -->
         <div class="mobile-controls">
+            <!-- Кнопки направления -->
             <div class="direction-controls">
                 <button id="upBtn">↑</button>
                 <div class="horizontal-controls">
@@ -27,13 +37,20 @@
                 </div>
                 <button id="downBtn">↓</button>
             </div>
+            <!-- Кнопка выстрела -->
             <button id="fireBtn">Огонь</button>
         </div>
+        
+        <!-- Кнопки меню игры -->
         <div class="game-menu">
             <button id="startBtn">Начать игру</button>
-            <button id="restartBtn" style="display: none;">Начать заново</button>
+            <!-- Кнопка "Начать заново" изначально скрыта -->
+            <button id="restartBtn" style="display: none;">Начать заново</button> 
         </div>
-    </div>
+
+    </div> <!-- Конец .game-container -->
+
+    <!-- Подключение основного скрипта игры -->
     <script src="game.js"></script>
 </body>
 </html> 
