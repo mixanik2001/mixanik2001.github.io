@@ -64,6 +64,7 @@ let score = 0;
 let lives = 3;
 let animationFrameId;
 let keysPressed = {}; // Объект для хранения состояния нажатых клавиш
+let mobileButtonsPressed = { up: false, down: false, left: false, right: false }; // Состояние мобильных кнопок
 
 // Танк игрока
 class Tank {
@@ -390,19 +391,46 @@ function initGame() {
         }
     });
     
-    // Обработчики мобильных кнопок
-    document.getElementById('upBtn').addEventListener('touchstart', () => movePlayer(DIRECTIONS.UP));
-    document.getElementById('rightBtn').addEventListener('touchstart', () => movePlayer(DIRECTIONS.RIGHT));
-    document.getElementById('downBtn').addEventListener('touchstart', () => movePlayer(DIRECTIONS.DOWN));
-    document.getElementById('leftBtn').addEventListener('touchstart', () => movePlayer(DIRECTIONS.LEFT));
-    document.getElementById('fireBtn').addEventListener('touchstart', () => playerTank.shoot());
+    // --- Мобильные кнопки ---
+    const upBtn = document.getElementById('upBtn');
+    const downBtn = document.getElementById('downBtn');
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    const fireBtn = document.getElementById('fireBtn');
+
+    // Функция для установки состояния кнопки направления
+    const setMobileDirection = (direction, state) => {
+        if (gameRunning && !gameOver) {
+            mobileButtonsPressed[direction] = state;
+        } else {
+             // Сбрасываем все состояния, если игра не активна
+             Object.keys(mobileButtonsPressed).forEach(key => mobileButtonsPressed[key] = false);
+        }
+    };
     
-    // Мышь и сенсорное управление для кнопок
-    document.getElementById('upBtn').addEventListener('mousedown', () => movePlayer(DIRECTIONS.UP));
-    document.getElementById('rightBtn').addEventListener('mousedown', () => movePlayer(DIRECTIONS.RIGHT));
-    document.getElementById('downBtn').addEventListener('mousedown', () => movePlayer(DIRECTIONS.DOWN));
-    document.getElementById('leftBtn').addEventListener('mousedown', () => movePlayer(DIRECTIONS.LEFT));
-    document.getElementById('fireBtn').addEventListener('mousedown', () => playerTank.shoot());
+    // События НАЖАТИЯ для кнопок направления
+    upBtn.addEventListener('touchstart', (e) => { e.preventDefault(); setMobileDirection('up', true); }, { passive: false });
+    upBtn.addEventListener('mousedown', () => setMobileDirection('up', true));
+    downBtn.addEventListener('touchstart', (e) => { e.preventDefault(); setMobileDirection('down', true); }, { passive: false });
+    downBtn.addEventListener('mousedown', () => setMobileDirection('down', true));
+    leftBtn.addEventListener('touchstart', (e) => { e.preventDefault(); setMobileDirection('left', true); }, { passive: false });
+    leftBtn.addEventListener('mousedown', () => setMobileDirection('left', true));
+    rightBtn.addEventListener('touchstart', (e) => { e.preventDefault(); setMobileDirection('right', true); }, { passive: false });
+    rightBtn.addEventListener('mousedown', () => setMobileDirection('right', true));
+
+    // События ОТПУСКАНИЯ для кнопок направления
+    const releaseEvents = ['touchend', 'mouseup', 'mouseleave', 'touchcancel'];
+    releaseEvents.forEach(event => {
+        upBtn.addEventListener(event, () => setMobileDirection('up', false));
+        downBtn.addEventListener(event, () => setMobileDirection('down', false));
+        leftBtn.addEventListener(event, () => setMobileDirection('left', false));
+        rightBtn.addEventListener(event, () => setMobileDirection('right', false));
+    });
+
+    // Кнопка Огня (оставляем как было - одиночный выстрел)
+    fireBtn.addEventListener('touchstart', (e) => { e.preventDefault(); if (gameRunning && !gameOver && playerTank) playerTank.shoot(); }, { passive: false });
+    fireBtn.addEventListener('mousedown', () => { if (gameRunning && !gameOver && playerTank) playerTank.shoot(); });
+
     
     // Кнопки меню
     document.getElementById('startBtn').addEventListener('click', startGame);
@@ -619,13 +647,13 @@ function gameLoop() {
     
     // Обработка ввода пользователя (непрерывное движение)
     if (!gameOver && playerTank) { // Добавим проверку на существование playerTank
-        if (keysPressed['KeyW'] || keysPressed['ArrowUp']) {
+        if (keysPressed['KeyW'] || keysPressed['ArrowUp'] || mobileButtonsPressed.up) {
             playerTank.move(DIRECTIONS.UP);
-        } else if (keysPressed['KeyS'] || keysPressed['ArrowDown']) {
+        } else if (keysPressed['KeyS'] || keysPressed['ArrowDown'] || mobileButtonsPressed.down) {
             playerTank.move(DIRECTIONS.DOWN);
-        } else if (keysPressed['KeyA'] || keysPressed['ArrowLeft']) {
+        } else if (keysPressed['KeyA'] || keysPressed['ArrowLeft'] || mobileButtonsPressed.left) {
             playerTank.move(DIRECTIONS.LEFT);
-        } else if (keysPressed['KeyD'] || keysPressed['ArrowRight']) {
+        } else if (keysPressed['KeyD'] || keysPressed['ArrowRight'] || mobileButtonsPressed.right) {
             playerTank.move(DIRECTIONS.RIGHT);
         }
     }
