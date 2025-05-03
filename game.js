@@ -23,8 +23,8 @@ const DIRECTIONS = {
 
 // Цвета
 const COLORS = {
-    PLAYER: '#f7d51d',
-    ENEMY: '#ff4d4d',
+    PLAYER: '#ffffff',
+    ENEMY: '#0000ff',
     BRICK: '#b86f50',
     STEEL: '#777777',
     WATER: '#5555ff',
@@ -196,6 +196,11 @@ class Tank {
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.size, this.size);
+        
+        // Добавляем контур
+        ctx.strokeStyle = '#006400'; // Темно-зеленый цвет контура
+        ctx.lineWidth = 1; // Толщина линии
+        ctx.strokeRect(this.x, this.y, this.size, this.size);
         
         // Рисуем пушку танка
         ctx.fillStyle = this.color;
@@ -608,7 +613,7 @@ function drawMap() {
                             tileY + Math.random() * TILE_SIZE, 
                             5, 
                             0, 
-                            Math.PI * 2
+                            Math.PI * 2 
                         );
                         ctx.fill();
                     }
