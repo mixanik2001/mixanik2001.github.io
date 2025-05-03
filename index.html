@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle City - Танчики</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Battle City</h1>
+            <div class="game-stats">
+                <div class="lives">Жизни: <span id="lives">3</span></div>
+                <div class="score">Очки: <span id="score">0</span></div>
+            </div>
+        </div>
+        <p id="welcome-message" class="welcome-text">Привет!</p>
+        <canvas id="gameCanvas"></canvas>
+        <div class="mobile-controls">
+            <div class="direction-controls">
+                <button id="upBtn">↑</button>
+                <div class="horizontal-controls">
+                    <button id="leftBtn">←</button>
+                    <button id="rightBtn">→</button>
+                </div>
+                <button id="downBtn">↓</button>
+            </div>
+            <button id="fireBtn">Огонь</button>
+        </div>
+        <div class="game-menu">
+            <button id="startBtn">Начать игру</button>
+            <button id="restartBtn" style="display: none;">Начать заново</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
