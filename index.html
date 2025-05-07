@@ -1,56 +1,614 @@
 <!DOCTYPE html>
+
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Важно для адаптивности -->
-    <title>Battle City - Танчики</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Иконка сайта -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SigmaPrint - Футболки с креативными принтами</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-    <!-- Основной контейнер игры -->
-    <div class="game-container">
-        
-        <!-- Верхняя часть: Заголовок и статистика -->
-        <div class="game-header">
-            <h1>Battle City</h1>
-            <div class="game-stats">
-                <div class="lives">Жизни: <span id="lives">3</span></div>
-                <div class="score">Очки: <span id="score">0</span></div>
+
+    <div id="gradient"></div>
+
+    <header>
+
+        <div class="container">
+
+            <div class="logo-wrapper">
+
+                <img src="assets/img/logo.png" alt="SigmaPrint Logo" class="header-logo">
+
             </div>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="#about" class="hover-scale">О компании</a></li>
+
+                    <li><a href="#values" class="hover-scale">Ценности</a></li>
+
+                    <li><a href="#career" class="btn btn-career-header hover-scale">Карьера</a></li>
+
+                    <li><a href="#benefits" class="hover-scale">Преимущества</a></li>
+
+                    <li><a href="#success" class="hover-scale">Истории успеха</a></li>
+
+                    <li><a href="#education" class="hover-scale">Обучение</a></li>
+
+                    <li><a href="#gallery" class="hover-scale">Наша студия</a></li>
+
+                </ul>
+
+            </nav>
+
+            <a href="#join" class="btn btn-join-header hover-scale">Присоединиться</a>
+
+            <div class="mobile-nav-toggle">
+
+                 <i class="fas fa-bars"></i> 
+
+            </div>
+
         </div>
-        
-        <!-- Сообщение перед началом игры -->
-        <p id="welcome-message" class="welcome-text">Привет!</p>
-        
-        <!-- Игровой холст (здесь рисуется сама игра) -->
-        <canvas id="gameCanvas"></canvas>
-        
-        <!-- Блок с кнопками управления для мобильных устройств -->
-        <div class="mobile-controls">
-            <!-- Кнопки направления -->
-            <div class="direction-controls">
-                <button id="upBtn">↑</button>
-                <div class="horizontal-controls">
-                    <button id="leftBtn">←</button>
-                    <button id="rightBtn">→</button>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="hero-text-content">
+
+                    <h2 class="masked-text">Твоя карьера <br>в мире маркетплейсов</h2>
+
+                    <p class="cursor"><span class="rotating-star">★</span> <span class="typewriter-text">в стабильной и успешной компании</span></p>
+
+                    <p class="hero-intro-text"><strong>Хочешь начать карьеру</strong> и стать топовым менеджером маркетплейсов, работая в команде профессионалов?<br>Тогда ты по адресу!</p>
+
+                    <p class="hero-intro-text">Если <strong>ты начинающий специалист</strong> или хочешь улучшить свои навыки, мы предлагаем тебе возможности профессионального роста и развития в сильной компании.<br>Давай знакомиться?</p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#join" class="btn primary hover-scale">Присоединиться к команде</a>
+
+                        <a href="#career" class="btn secondary hover-scale">Узнать о карьере</a>
+
+                    </div>
+
                 </div>
-                <button id="downBtn">↓</button>
+
+                <img src="assets/img/logo.png" alt="SigmaPrint Hero Logo" class="hero-logo-image">
+
             </div>
-            <!-- Кнопка выстрела -->
-            <button id="fireBtn">Огонь</button>
-        </div>
-        
-        <!-- Кнопки меню игры -->
-        <div class="game-menu">
-            <button id="startBtn">Начать игру</button>
-            <!-- Кнопка "Начать заново" изначально скрыта -->
-            <button id="restartBtn" style="display: none;">Начать заново</button> 
+
         </div>
 
-    </div> <!-- Конец .game-container -->
+    </section>
 
-    <!-- Подключение основного скрипта игры -->
-    <script src="game.js"></script>
+    <section id="about" class="about">
+
+        <div class="container">
+
+            <h2>О нас</h2>
+
+            <h3>SigmaPrint</h3>
+
+            <p>SigmaPrint – производитель и продавец футболок с креативными принтами. Наша миссия – дарить людям качественную и стильную одежду, которая отражает их индивидуальность. Мы верим в постоянное <strong>развитие, открытость идеям и дружелюбную рабочую атмосферу.</strong></p>
+
+        </div>
+
+    </section>
+
+    <section id="values" class="values">
+
+        <div class="container">
+
+            <h2>Чем мы гордимся</h2>
+
+            <h3>Наши ценности</h3>
+
+            <div class="values-grid">
+
+                <div class="value-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+
+                    <h4>Стабильность</h4>
+
+                    <p>Прозрачная система оплаты и своевременные выплаты.</p>
+
+                </div>
+
+                <div class="value-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-hands-helping"></i></div>
+
+                    <h4>Поддержка</h4>
+
+                    <p>Наставничество от старших менеджеров, постоянное обучение, дружный коллектив.</p>
+
+                </div>
+
+                <div class="value-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+
+                    <h4>Развитие</h4>
+
+                    <p>Доступ к обширной Базе Знаний, возможность профессионального роста всего за несколько месяцев.</p>
+
+                </div>
+
+                <div class="value-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-door-open"></i></div>
+
+                    <h4>Открытость</h4>
+
+                    <p>Адекватное руководство, которое ценит инициативу и всегда готово обсудить новые идеи.</p>
+
+                </div>
+
+            </div>
+
+            <p class="values-footer">Мы не просто продаём футболки – мы даём возможность каждому воплотить свой потенциал и стать экспертом на маркетплейсах.</p>
+
+        </div>
+
+    </section>
+
+    <section id="career" class="career">
+
+        <div class="container">
+
+            <h2>Развитие</h2>
+
+            <h3>Должности и карьерный рост</h3>
+
+            <div class="career-path">
+
+                <div class="career-step hover-scale">
+
+                    <div class="icon"><img src="assets/images/1.png" alt="Иконка Младший менеджер"></div>
+
+                    <h4>Младший менеджер</h4>
+
+                    <p class="career-main">Основные задачи: ведение таблиц, корректировка рекламы, анализ конкурентов, ответы покупателям, работа с карточками.</p>
+
+                    <div class="career-details">
+
+                        <h5>Детальные обязанности:</h5>
+
+                        <p>Ведение таблиц РНП, корректировка ставок и бюджета рекламных кампаний, анализ конкурентов (цены, акции, контент), ответы на вопросы и отзывы покупателей, работа с карточками товара (заполнение характеристик, описаний), генерация контента через ИИ, постановка задач дизайнеру.</p>
+
+                        <h5>Критерии повышения:</h5>
+
+                        <p>Успешное прохождение курса в Базе Знаний и сдача экзамена.</p>
+
+                    </div>
+
+                    <button class="btn-toggle hover-scale">Подробнее</button>
+
+                </div>
+
+                <div class="arrow-wrapper">
+
+                    <div class="career-arrow">→</div>
+
+                    <p class="arrow-timing">Срок до повышения:<br> 3 месяца</p>
+
+                </div>
+
+                <div class="career-step hover-scale">
+
+                    <div class="icon"><img src="assets/images/2.png" alt="Иконка Менеджер"></div>
+
+                    <h4>Менеджер</h4>
+
+                    <p class="career-main">Основные задачи: полный цикл ведения бренда без наставника, организация поставок, ценообразование.</p>
+
+                    <div class="career-details">
+
+                        <h5>Детальные обязанности:</h5>
+
+                        <p>Все задачи младшего менеджера, выполняемые самостоятельно. Плюс организация поставок на склады маркетплейсов, работа с ценами и скидками (участие в акциях).</p>
+
+                        <h5>Критерии повышения:</h5>
+
+                        <p>Прохождение курса для менеджера, успешная сдача экзамена, положительное ревью от руководства и собеседование с коммерческим директором.</p>
+
+                    </div>
+
+                    <button class="btn-toggle hover-scale">Подробнее</button>
+
+                </div>
+
+                <div class="arrow-wrapper">
+
+                    <div class="career-arrow">→</div>
+
+                    <p class="arrow-timing">Срок до повышения:<br> 3 месяца</p>
+
+                </div>
+
+                <div class="career-step hover-scale">
+
+                    <div class="icon"><img src="assets/images/3.png" alt="Иконка Старший менеджер"></div>
+
+                    <h4>Старший менеджер</h4>
+
+                    <p class="career-main">Основные задачи: управление командой, стратегия бренда, планирование бюджета.</p>
+
+                    <div class="career-details">
+
+                        <h5>Детальные обязанности:</h5>
+
+                        <p>Управление командой младших менеджеров, наставничество, составление плана поставок (индекс локализации), контроль участия брендов в акциях и управление скидками, планирование и контроль рекламного бюджета.</p>
+
+                        <h5>Ключевые показатели (KPI):</h5>
+
+                        <p>Маржинальная прибыль курируемых брендов и результаты работы подопечных младших менеджеров.</p>
+
+                    </div>
+
+                    <button class="btn-toggle hover-scale">Подробнее</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="benefits" class="benefits">
+
+        <div class="container">
+
+            <h2>Преимущества работы с нами</h2>
+
+            <div class="benefits-grid">
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+
+                    <p>Безопасность и стабильность (своевременная оплата, прозрачная мотивация)</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
+
+                    <p>Быстрый карьерный рост (до старшего менеджера за 6 месяцев)</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+
+                    <p>Обучение и поддержка (База Знаний, наставничество, еженедельные встречи)</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-users"></i></div>
+
+                    <p>Открытая атмосфера и адекватное руководство</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-gift"></i></div>
+
+                    <p>Подарки на государственные праздники</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-birthday-cake"></i></div>
+
+                    <p>Самые тёплые поздравления с днём рождения!</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-tags"></i></div>
+
+                    <p>Продукция компании со скидкой или в подарок</p>
+
+                </div>
+
+                <div class="benefit-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+
+                    <p>Открытость к идеям – ваша инициатива может воплотиться в жизнь</p>
+
+                </div>
+
+            </div>
+
+            <p class="benefits-footer">Мы создаем среду, где вы можете быстро расти и раскрыть свой потенциал!</p>
+
+        </div>
+
+    </section>
+
+    <section id="success" class="success">
+
+        <div class="container">
+
+            <h2>Вдохновение</h2>
+
+            <h3>Реальные истории успеха</h3>
+
+            <p class="success-intro">Мы не понаслышке знаем, как быстро можно вырасти, даже если ты начинаешь без серьёзного опыта работы на маркетплейсах. Вот несколько реальных кейсов:</p>
+
+            <div class="success-stories">
+
+                <div class="story-card hover-scale">
+
+                    <div class="story-image">
+
+                        <img src="assets/images/arina.jpg" alt="Фото Арины">
+
+                    </div>
+
+                    <h4>Арина</h4>
+
+                    <p class="position">Менеджер</p>
+
+                    <p>Начала работать в SigmaPrint меньше года назад. Имела только базовые навыки после курсов по Wildberries, но очень быстро вникла в реальную работу кабинета и рекламных кампаний. За несколько месяцев достигла отличных показателей по маржинальной прибыли и получила предложение стать старшим менеджером. Пока ей комфортно оставаться в роли менеджера, но возможности для дальнейшего роста всегда открыты.</p>
+
+                </div>
+
+                <div class="story-card hover-scale">
+
+                    <div class="story-image">
+
+                        <img src="assets/images/kristina.jpg" alt="Фото Кристины">
+
+                    </div>
+
+                    <h4>Кристина</h4>
+
+                    <p class="position">Старший менеджер</p>
+
+                    <p>Пришла в компанию без практических знаний личного кабинета на Wildberries. Начинала как младший менеджер, но уже в течение нескольких месяцев успешно освоила все инструменты, прошла обучение в Базе Знаний и сдала экзамен. Сегодня Кристина – старший менеджер, она курирует нескольких младших специалистов и координирует стратегию развития брендов.</p>
+
+                </div>
+
+            </div>
+
+            <p class="success-footer">"В SigmaPrint вы сами определяете свою траекторию развития – всё зависит от ваших целей, стремления учиться и добиваться результатов."</p>
+
+        </div>
+
+    </section>
+
+    <section id="education" class="education">
+
+        <div class="container">
+
+            <h2>Помощь</h2>
+
+            <h3>Обучение и поддержка</h3>
+
+            <div class="education-grid">
+
+                <div class="education-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
+
+                    <h4>Наставничество и планёрки</h4>
+
+                    <ul>
+
+                        <li>У каждого новичка есть старший менеджер-наставник.</li>
+
+                        <li>Ежедневные короткие планёрки с руководителем и коллегами.</li>
+
+                        <li>Еженедельные обучающие встречи по разным темам: работа с ИИ, тесты новинок, анализ конкурентов и пр.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="education-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-book"></i></div>
+
+                    <h4>Внутренняя База Знаний</h4>
+
+                    <ul>
+
+                        <li>Подробные статьи, скриншоты, видеозаписи обучающих сессий по каждому аспекту продвижения.</li>
+
+                        <li>Шаг за шагом разбираем все инструменты работы с карточками товара, рекламными кампаниями, аналитикой и пр.</li>
+
+                        <li>Регулярные обновления с учётом новых фишек и трендов маркетплейсов.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="education-card hover-scale">
+
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+
+                    <h4>Дополнительные ресурсы и мотивация</h4>
+
+                    <ul>
+
+                        <li>Постоянная обратная связь по результатам.</li>
+
+                        <li>Внутренние чаты для обмена опытом.</li>
+
+                        <li>Поощрения за идеи и проекты, помогающие компании расти.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="gallery" class="photo-gallery">
+
+        <div class="container">
+
+            <h2>Наше производство</h2>
+
+            <h3>Как мы создаём качество и стиль:</h3>
+
+            <div class="slider-container">
+
+                <div class="slider">
+
+                    <div class="slide"><img src="assets/images/photo_2024-03-26_14-54-45.jpg" alt="Gallery image 1"></div>
+
+                    <div class="slide"><img src="assets/images/photo_2024-04-04_11-16-45.jpg" alt="Gallery image 2"></div>
+
+                    <div class="slide"><img src="assets/images/photo_2024-08-30_14-28-55.jpg" alt="Gallery image 3"></div>
+
+                    <div class="slide"><img src="assets/images/photo_2024-08-30_14-28-58.jpg" alt="Gallery image 4"></div>
+
+                    <div class="slide"><img src="assets/images/photo_2024-08-30_14-29-01.jpg" alt="Gallery image 5"></div>
+
+                    <div class="slide"><img src="assets/images/photo_2024-08-30_14-30-00.jpg" alt="Gallery image 6"></div>
+
+                </div>
+
+                <div class="slider-navigation">
+
+                    <button class="slider-btn prev-btn">&lt;</button>
+
+                    <button class="slider-btn next-btn">&gt;</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="gallery-footer-wrapper">
+        <p class="gallery-footer-text">Наше производство в г. Москва, но вы можете работать в любой комфортной точке мира!<br>Работа удаленная, без посещения офиса!</p>
+    </div>
+
+    <section id="join" class="join">
+
+        <div class="container">
+
+            <div class="join-content">
+
+                <h2>Стань частью команды SigmaPrint</h2>
+
+                <p>Хочешь построить карьеру в динамичной сфере маркетплейсов? Присоединяйся к нам! Мы ищем ответственных и увлечённых людей, готовых учиться и вносить свой вклад в развитие компании. Звучит интересно? Заполни короткую форму и давай знакомиться!</p>
+
+                <h3>Готовы начать путь в мир маркетплейсов?</h3>
+
+                <p>Мы ценим каждого сотрудника и создаём условия, в которых можно быстро расти, чувствовать себя в безопасности в коллективе и получать достойное вознаграждение за результаты. В SigmaPrint у тебя есть возможность раскрыть свой потенциал и внести вклад в развитие динамичного рынка маркетплейсов. Ждём тебя в нашей команде!</p>
+
+            </div>
+
+            <div class="join-form">
+
+                <h3>Оставить заявку</h3>
+
+                <form id="application-form">
+
+                    <div class="form-group">
+
+                        <input type="text" id="name" name="name" placeholder="Имя" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="email" id="email" name="email" placeholder="Ваш email" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <textarea id="about" name="about" placeholder="Коротко о себе" rows="4" required></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="text" id="resume" name="resume" placeholder="Можно вставить ссылку на резюме">
+
+                    </div>
+
+                    <button type="submit" class="btn primary hover-scale">Отправить заявку</button>
+
+                </form>
+
+                <div class="form-visual">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-contact">
+                <!-- Можно добавить сюда другую контактную информацию если нужно -->
+            </div>
+
+            <div class="footer-email">
+                <h4>Свяжитесь с нами:</h4>
+                <p><a href="mailto:optprint.com@gmail.com">optprint.com@gmail.com</a></p>
+            </div>
+
+            <div class="footer-copyright">
+
+                <p>© 2025 SigmaPrint. Все права защищены.</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="scripts.js"></script>
+
 </body>
+
 </html> 
